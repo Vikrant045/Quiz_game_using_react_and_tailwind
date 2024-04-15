@@ -33,6 +33,7 @@ export const reducer =(state,action)=>{
                 ...state,    
                 index: state.index+1,
                 isChecked:false,
+                checkError:false,
                ans_arr: new_Updt_Arr,
                checked_ans:""
                }

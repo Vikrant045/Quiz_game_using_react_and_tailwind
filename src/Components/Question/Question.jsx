@@ -2,17 +2,9 @@ import React, {useEffect, useState} from 'react';
 
 
 function Question({ question,state,dispatch }) {
-    
-  //   useEffect(() => {
-  //     const initialAnswer = state.ans_arr[state.index] || "";
-  //    // dispatch({
-  //         type: "handle_check",
-  //         payload: initialAnswer
-  //     });
-  // }, [state.index, question, dispatch, state.ans_arr]);
 
 
-    const handleChange = (e) => {                       // handle change
+    const handleChange = (e) => {                          // handle change
       
       let newAns =e.target.value;
         console.log(newAns);
@@ -30,7 +22,7 @@ function Question({ question,state,dispatch }) {
       console.log("Question id",question.id)
      // console.log("Q arr length",question.length)
       console.log("Array of answers",state.ans_arr)
-      console.log("ischecke = ",state.isChecked)
+      console.log("ischecked = ",state.isChecked)
      
       
         dispatch({
@@ -41,14 +33,14 @@ function Question({ question,state,dispatch }) {
       
        
     };
-
-    const handleBackBtn = () => {                   //handle back
+   
+    const handleBackBtn = () => {                            //handle back
         dispatch({
             type: "handle_back"
         });
     };
 
-    const handleSubmitBtn = () => {                 // handle submit btn 
+    const handleSubmitBtn = () => {                          // handle submit btn 
          console.log("STATE INDEX  = ",state.index)
          console.log("state.data.data.lengt ",state.data.data.length)
           if(state.index ==state.data.data.length-1){
@@ -58,6 +50,7 @@ function Question({ question,state,dispatch }) {
           }
         dispatch({
             type: "handle_submit",
+
            
         });
         console.log("RESULT",state.result)
@@ -67,7 +60,8 @@ function Question({ question,state,dispatch }) {
     return (
         <div>
        
-        
+                    {state.checkError && (<div className='text-2xl font-semibold text-red-500 mt-10'> Please Check Any Answer To Proceed Next</div>)}
+
           {(state.index === question.id) && (
                 <div className='mt-16'>
                     <p className='text-3xl font-semibold'>Q {question.id+1}: {question.question}</p>
@@ -118,7 +112,6 @@ function Question({ question,state,dispatch }) {
                 </div>
             </div>
 
-            {!state.isChecked && (<div className='text-2xl font-semibold text-red-600 '> Please Check any answer to proceed next</div>)}
         </div>
     );
 }

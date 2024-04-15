@@ -1,10 +1,7 @@
 import React, {  } from 'react';
 
 function Stepper({ state,dispatch }) {
-//   const  checxk=()=>{
-//    console.log("isChecked =",state.isChecked);
-//   }
-//   checxk();
+
 
   return (
     <div className='flex justify-between mt-8'>
